@@ -2,7 +2,7 @@
 
 /* --- Cài đặt chung --- */
 QMainWindow {
-    background-color: #121212; /* Nền tối hoàn toàn */
+    background-color: #121212;
 }
 
 QWidget {
@@ -11,16 +11,15 @@ QWidget {
     color: #e0e0e0;
 }
 
-/* --- ATM Panel (Bên trái) --- */
+/* --- ATM Panel --- */
 QFrame#ATMPanel {
     background-color: #1e1e1e;
     border-right: 2px solid #333;
 }
 
-/* Màn hình hiển thị ATM (Mô phỏng LCD) */
 QLineEdit#DisplayScreen {
     background-color: #0a0a0a;
-    color: #00ff00; /* Chữ xanh lá hacker */
+    color: #00ff00;
     border: 2px solid #333;
     border-radius: 10px;
     padding: 15px;
@@ -40,50 +39,34 @@ QLineEdit#CardInput {
     font-size: 14px;
 }
 
-/* Các nút bấm Keypad */
 QPushButton.KeypadBtn {
     background-color: #333333;
     color: white;
     border: 1px solid #444;
-    border-radius: 30px; /* Nút tròn */
+    border-radius: 30px;
     font-size: 18px;
     font-weight: bold;
     min-width: 60px;
     min-height: 60px;
 }
-QPushButton.KeypadBtn:hover {
-    background-color: #4d4d4d;
-    border: 1px solid #666;
-}
-QPushButton.KeypadBtn:pressed {
-    background-color: #007acc; /* Xanh khi nhấn */
-}
+QPushButton.KeypadBtn:hover { background-color: #4d4d4d; border: 1px solid #666; }
+QPushButton.KeypadBtn:pressed { background-color: #007acc; }
 
-/* Nút chức năng đặc biệt */
-QPushButton#BtnClear {
-    background-color: #d32f2f; /* Đỏ */
-    border-color: #b71c1c;
-}
-QPushButton#BtnClear:hover { background-color: #f44336; }
+QPushButton#BtnClear { background-color: #d32f2f; border-color: #b71c1c; }
+QPushButton#BtnEnter { background-color: #2e7d32; border-color: #1b5e20; }
 
-QPushButton#BtnEnter {
-    background-color: #2e7d32; /* Xanh lá */
-    border-color: #1b5e20;
-}
-QPushButton#BtnEnter:hover { background-color: #43a047; }
-
-/* --- Server Monitor (Bên phải) --- */
+/* --- Server Monitor --- */
 QTextEdit#ServerLog {
     background-color: #0d0d0d;
     color: #00ff00;
     border: 1px solid #333;
     border-radius: 5px;
     font-family: "Consolas", "Courier New", monospace;
-    font-size: 13px;
+    font-size: 11px; /* Font nhỏ gọn */
     padding: 10px;
+    line-height: 1.2;
 }
 
-/* Thanh Progress Bar Avalanche */
 QProgressBar {
     border: 1px solid #444;
     border-radius: 5px;
@@ -97,7 +80,6 @@ QProgressBar::chunk {
     border-radius: 5px;
 }
 
-/* Button Test Avalanche */
 QPushButton#BtnAvalanche {
     background-color: #1976d2;
     color: white;
@@ -105,38 +87,40 @@ QPushButton#BtnAvalanche {
     padding: 10px;
     font-weight: bold;
 }
-QPushButton#BtnAvalanche:hover { background-color: #2196f3; }
 
-/* --- FIX MÀU SẮC CHO CÁC HỘP THOẠI (MESSAGE BOX) --- */
-/* Đây là phần thêm vào để sửa lỗi bảng Success bị trắng */
-
-QMessageBox {
-    background-color: #2d2d2d; /* Nền màu xám đậm thay vì trắng */
-    border: 1px solid #444;
+/* --- [FIX] GROUPBOX (KHUNG NHẬP KHÓA) --- */
+QGroupBox {
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin-top: 22px; /* Tạo khoảng trống phía trên cho tiêu đề */
+    font-weight: bold;
+    padding-top: 10px;
 }
 
-/* Màu chữ trong thông báo */
-QMessageBox QLabel {
-    color: #ffffff; /* Chữ màu trắng sáng */
-    font-weight: normal;
-    background-color: transparent;
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 10px;
+    padding: 0 5px;
+    background-color: #2d2d2d; /* Nền trùng màu dialog để che đường viền */
 }
 
-/* Nút bấm trong thông báo (OK, Cancel...) */
-QMessageBox QPushButton {
+/* --- [FIX] DIALOG & BUTTONS --- */
+QDialog {
+    background-color: #2d2d2d;
+}
+
+QDialog QPushButton {
     background-color: #3a3a3a;
     color: white;
     border: 1px solid #555;
     border-radius: 4px;
-    padding: 6px 15px;
-    min-width: 60px;
+    padding: 8px 20px; /* Padding rộng hơn */
+    min-width: 100px;  /* Đảm bảo nút đủ rộng */
+    font-weight: bold;
 }
+QDialog QPushButton:hover { background-color: #505050; border: 1px solid #007acc; }
 
-QMessageBox QPushButton:hover {
-    background-color: #505050;
-    border: 1px solid #007acc;
-}
-
-QMessageBox QPushButton:pressed {
-    background-color: #007acc;
-}
+/* MessageBox riêng */
+QMessageBox { min-width: 450px; }
+QMessageBox QLabel { color: #ffffff; }
